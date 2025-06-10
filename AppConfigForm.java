@@ -2,14 +2,17 @@ package com.bnpp.pb.lynx.ui.gwt.client.appconfig;
 
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.form.DataEntryForm;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableView;
+import com.bnpp.pb.common.coreui.gwt.client.gxt3.grid.ModelData;
 import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.form.ComboBox;
 import com.sencha.gxt.widget.core.client.form.DateField;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Form for App Config CRUD operations
  */
-public class AppConfigForm extends DataEntryForm {
+public class AppConfigForm extends DataEntryForm<ModelData<String>> {
     private static final String BIZ_OBJECT = "appConfigBO";
     private TextField appIdField;
     private TextField propTypeField;
@@ -68,5 +71,17 @@ public class AppConfigForm extends DataEntryForm {
     @Override
     public String getBizObjectName() {
         return BIZ_OBJECT;
+    }
+
+    @Override
+    public List<String> createFormFields() {
+        List<String> formFields = new ArrayList<>();
+        formFields.add(AppConfigDef.appId);
+        formFields.add(AppConfigDef.propType);
+        formFields.add(AppConfigDef.propName);
+        formFields.add(AppConfigDef.propValue);
+        formFields.add(AppConfigDef.active);
+        formFields.add(AppConfigDef.isActive);
+        return formFields;
     }
 } 

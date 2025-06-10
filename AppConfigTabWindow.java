@@ -1,6 +1,9 @@
 package com.bnpp.pb.lynx.ui.gwt.client.appconfig;
 
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.tab.TabWindow;
+import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableWindow;
+import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.GridToolbar;
+import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.form.ActionBar;
 import com.google.gwt.user.client.ui.Widget;
 import java.util.HashMap;
 import java.util.Map;

@@ -6,6 +6,7 @@ import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableView;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableWindow;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.profile.AbstractBaseProfile;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.profile.GridProfile;
+import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.form.ActionBar;
 import com.bnpp.pb.lynx.enums.app.AppIdsConstants;
 import com.bnpp.pb.lynx.ui.gwt.client.LynxGridToolBar;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -62,7 +63,7 @@ public class AppConfigWindow extends TableWindow {
 
     @Override
     public GridToolbar createGridToolbar() {
-        GridToolbar toolbar = new LynxGridToolBar(tableView);
+        LynxGridToolBar toolbar = new LynxGridToolBar(tableView);
         toolbar.setShowProfile(false);
         toolbar.setCRUDAllowed(true);
         toolbar.setUpdateAllowed(true);
@@ -70,6 +71,7 @@ public class AppConfigWindow extends TableWindow {
         toolbar.setViewAllowed(true);
         toolbar.setCreateAllowed(true);
         toolbar.setExportAllowed(true);
+        toolbar.createToolbar(this.getTableView(), this, null, null);
         return toolbar;
     }
 
@@ -89,10 +91,11 @@ public class AppConfigWindow extends TableWindow {
 
     @Override
     public AbstractBaseProfile createProfile() {
+        ActionBar actionBar = new ActionBar();
         return new GridProfile(
             "Application Configuration",
             this,
-            null,
+            actionBar,
             createGridToolbar(),
             new AppConfigColConfig(getTableView()),
             true
