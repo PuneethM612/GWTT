@@ -4,6 +4,8 @@ import com.bnpp.pb.common.coreui.gwt.client.enums.ToolbarFlag;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.GridToolbar;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableView;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableWindow;
+import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.profile.AbstractBaseProfile;
+import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.profile.GridProfile;
 import com.bnpp.pb.lynx.enums.app.AppIdsConstants;
 import com.bnpp.pb.lynx.ui.gwt.client.LynxGridToolBar;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -74,5 +76,17 @@ public class AppConfigWindow extends TableWindow {
     @Override
     public IsWidget createPanel() {
         return this.fillPanel();
+    }
+
+    @Override
+    public AbstractBaseProfile createProfile() {
+        return new GridProfile(
+            "Application Configuration",
+            this,
+            null,
+            createGridToolbar(),
+            new AppConfigColConfig(getTableView()),
+            true
+        );
     }
 } 

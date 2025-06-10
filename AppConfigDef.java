@@ -33,4 +33,9 @@ public class AppConfigDef extends BaseFieldsDef {
     public AppConfigDef() {
         setFieldNames(gridFieldNames, formFieldNames);
     }
+
+    @Override
+    public String getIdentifierField() {
+        return id;
+    }
 } 
