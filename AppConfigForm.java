@@ -10,6 +10,7 @@ import com.sencha.gxt.widget.core.client.form.DateField;
  * Form for App Config CRUD operations
  */
 public class AppConfigForm extends DataEntryForm {
+    private static final String BIZ_OBJECT = "appConfigBO";
     private TextField appIdField;
     private TextField propTypeField;
     private TextField propNameField;
@@ -62,5 +63,10 @@ public class AppConfigForm extends DataEntryForm {
     protected void initializeFields() {
         activeField.setValue("Y");
         isActiveField.setValue("Y");
+    }
+
+    @Override
+    public String getBizObjectName() {
+        return BIZ_OBJECT;
     }
 } 

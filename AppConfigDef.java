@@ -38,4 +38,9 @@ public class AppConfigDef extends BaseFieldsDef {
     public String getIdentifierField() {
         return id;
     }
+
+    @Override
+    public BaseFieldsDef createFieldsDef() {
+        return new AppConfigDef();
+    }
 } 

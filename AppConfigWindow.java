@@ -9,6 +9,7 @@ import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.profile.GridProfile;
 import com.bnpp.pb.lynx.enums.app.AppIdsConstants;
 import com.bnpp.pb.lynx.ui.gwt.client.LynxGridToolBar;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.Widget;
 
 import java.util.EnumSet;
 
@@ -25,11 +26,11 @@ public class AppConfigWindow extends TableWindow {
         ToolbarFlag.EXPORT_EXCEL
     );
 
-    public static AppConfigWindow getInstance() {
+    public static Widget getInstance() {
         if (instance == null) {
             instance = new AppConfigWindow();
         }
-        return instance;
+        return instance.asWidget();
     }
 
     private AppConfigWindow() {
@@ -61,7 +62,15 @@ public class AppConfigWindow extends TableWindow {
 
     @Override
     public GridToolbar createGridToolbar() {
-        return new LynxGridToolBar(tableView);
+        GridToolbar toolbar = new LynxGridToolBar(tableView);
+        toolbar.setShowProfile(false);
+        toolbar.setCRUDAllowed(true);
+        toolbar.setUpdateAllowed(true);
+        toolbar.setDeleteAllowed(true);
+        toolbar.setViewAllowed(true);
+        toolbar.setCreateAllowed(true);
+        toolbar.setExportAllowed(true);
+        return toolbar;
     }
 
     @Override

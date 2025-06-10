@@ -13,7 +13,7 @@ public class AppConfigTabWindow extends TabWindow {
     private Map<String, Widget> tabConfigDetails;
 
     public AppConfigTabWindow() {
-        super(WINDOW_KEY);
+        super();
         tabConfigDetails = new HashMap<>();
         init();
     }
@@ -30,5 +30,10 @@ public class AppConfigTabWindow extends TabWindow {
     @Override
     public String getWindowTitle() {
         return "Application Configuration";
+    }
+
+    @Override
+    public String getWindowKey() {
+        return WINDOW_KEY;
     }
 } 
