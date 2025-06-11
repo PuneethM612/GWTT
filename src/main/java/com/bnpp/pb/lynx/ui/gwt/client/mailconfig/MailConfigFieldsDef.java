@@ -37,7 +37,7 @@ public class MailConfigFieldsDef extends BaseFieldsDef {
     }
 
     @Override
-    public String getldentifierField() {
+    public String getIdentifierField() {
         return id;
     }
 } 
