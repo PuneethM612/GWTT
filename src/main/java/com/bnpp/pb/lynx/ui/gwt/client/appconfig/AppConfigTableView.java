@@ -21,7 +21,12 @@ public class AppConfigTableView extends TableView {
     }
 
     @Override
-    protected AppConfigFieldsDef getFieldsDef() {
+    public AppConfigFieldsDef createFieldsDef() {
+        return new AppConfigFieldsDef();
+    }
+
+    @Override
+    public AppConfigFieldsDef getFieldsDef() {
         return fieldsDef;
     }
 

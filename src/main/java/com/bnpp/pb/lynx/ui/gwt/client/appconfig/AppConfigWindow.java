@@ -41,7 +41,7 @@ public class AppConfigWindow extends AbstractLynxTabWindow {
     }
 
     @Override
-    public LinkedHashMap<String, TableWindow> getTabConfigDetails() {
+    public LinkedHashMap<String, TableWindow> getTabConfig() {
         LinkedHashMap<String, TableWindow> config = new LinkedHashMap<>();
         config.put("Application Configuration", this);
         return config;
