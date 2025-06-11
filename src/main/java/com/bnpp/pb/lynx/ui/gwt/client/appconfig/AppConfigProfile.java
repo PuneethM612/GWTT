@@ -14,7 +14,7 @@ public class AppConfigProfile extends AbstractBaseProfile {
     public void initProfiles() {
         // Set default profile settings
         for (String field : AppConfigFieldsDef.gridDefaultFieldNames) {
-            setFieldVisibility(field, true);
+            setVisible(field, true);
         }
     }
 

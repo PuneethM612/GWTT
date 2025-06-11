@@ -23,8 +23,9 @@ public class AppConfigFormFields extends BaseFormFieldConfig {
     }
 
     @Override
-    public void createFields() {
+    public BaseFormFieldConfig createFields() {
         initFields();
+        return this;
     }
 
     private void initFields() {
