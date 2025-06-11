@@ -13,7 +13,8 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.sencha.gxt.widget.core.client.container.Container;
 
 import java.util.EnumSet;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AppConfigWindow extends AbstractLynxTabWindow {
     public static final String BIZ_OBJECT = "appConfigBO";
@@ -41,10 +42,15 @@ public class AppConfigWindow extends AbstractLynxTabWindow {
     }
 
     @Override
-    public LinkedHashMap<String, TableWindow> getTabConfig() {
-        LinkedHashMap<String, TableWindow> config = new LinkedHashMap<>();
+    public Map<String, TableWindow> getTabConfig() {
+        Map<String, TableWindow> config = new HashMap<>();
         config.put("Application Configuration", this);
         return config;
+    }
+
+    @Override
+    public Map<String, TableWindow> getTabConfigDetails() {
+        return getTabConfig();
     }
 
     @Override
