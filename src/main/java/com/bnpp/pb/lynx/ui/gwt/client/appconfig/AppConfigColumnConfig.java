@@ -3,7 +3,6 @@ package com.bnpp.pb.lynx.ui.gwt.client.appconfig;
 import com.bnpp.pb.common.coreui.gwt.client.base.GridColumns;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.base.BaseGridColumnConfig;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.grid.ModelData;
-import com.bnpp.pb.common.coreui.gwt.client.gxt3.security.SecurityHelper;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableView;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 
@@ -13,7 +12,6 @@ public class AppConfigColumnConfig extends BaseGridColumnConfig {
     
     public AppConfigColumnConfig(TableView tableView) {
         super(tableView);
-        getGridFormatter().getHrefInEMap().putAll(new AppConfigGridFormatter(SecurityHelper.get()).getHrefInEoMap());
     }
 
     @Override

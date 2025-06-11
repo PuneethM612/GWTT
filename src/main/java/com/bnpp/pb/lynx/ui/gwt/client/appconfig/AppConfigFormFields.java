@@ -1,10 +1,10 @@
 package com.bnpp.pb.lynx.ui.gwt.client.appconfig;
 
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.base.BaseFormFieldConfig;
-import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.form.field.CheckBoxField;
-import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.form.field.TextField;
-import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.form.field.NumberField;
+import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.form.TextArea;
+import com.sencha.gxt.widget.core.client.form.NumberField;
+import com.sencha.gxt.widget.core.client.form.CheckBox;
 
 public class AppConfigFormFields extends BaseFormFieldConfig {
     private TextField appKeyField;
@@ -12,8 +12,8 @@ public class AppConfigFormFields extends BaseFormFieldConfig {
     private TextArea toField;
     private TextArea ccField;
     private TextArea commentField;
-    private CheckBoxField activeField;
-    private NumberField versionField;
+    private CheckBox activeField;
+    private NumberField<Integer> versionField;
     private TextField partitionKeyField;
 
     public AppConfigFormFields() {
@@ -22,15 +22,17 @@ public class AppConfigFormFields extends BaseFormFieldConfig {
     }
 
     private void createFields() {
-        appKeyField = new TextField(AppConfigFieldsDef.appKey, "App Key");
+        appKeyField = new TextField();
+        appKeyField.setName(AppConfigFieldsDef.appKey);
+        appKeyField.setFieldLabel("App Key");
         appKeyField.setAllowBlank(false);
         appKeyField.setWidth(300);
-        appKeyField.setMaxLength(255);
 
-        emailIdField = new TextField(AppConfigFieldsDef.emailId, "Email ID");
+        emailIdField = new TextField();
+        emailIdField.setName(AppConfigFieldsDef.emailId);
+        emailIdField.setFieldLabel("Email ID");
         emailIdField.setAllowBlank(false);
         emailIdField.setWidth(300);
-        emailIdField.setMaxLength(255);
 
         toField = new TextArea();
         toField.setName(AppConfigFieldsDef.toField);
@@ -38,32 +40,34 @@ public class AppConfigFormFields extends BaseFormFieldConfig {
         toField.setAllowBlank(false);
         toField.setWidth(300);
         toField.setHeight(60);
-        toField.setMaxLength(255);
 
         ccField = new TextArea();
         ccField.setName(AppConfigFieldsDef.ccField);
         ccField.setFieldLabel("CC");
         ccField.setWidth(300);
         ccField.setHeight(60);
-        ccField.setMaxLength(255);
 
         commentField = new TextArea();
         commentField.setName(AppConfigFieldsDef.comment);
         commentField.setFieldLabel("Comment");
         commentField.setWidth(300);
         commentField.setHeight(60);
-        commentField.setMaxLength(255);
 
-        activeField = new CheckBoxField(AppConfigFieldsDef.active, "Active");
+        activeField = new CheckBox();
+        activeField.setName(AppConfigFieldsDef.active);
+        activeField.setBoxLabel("Active");
         activeField.setValue(true);
 
-        versionField = new NumberField(AppConfigFieldsDef.version, "Version");
+        versionField = new NumberField<Integer>();
+        versionField.setName(AppConfigFieldsDef.version);
+        versionField.setFieldLabel("Version");
         versionField.setValue(0);
         versionField.setWidth(100);
 
-        partitionKeyField = new TextField(AppConfigFieldsDef.partitionKey, "Partition Key");
+        partitionKeyField = new TextField();
+        partitionKeyField.setName(AppConfigFieldsDef.partitionKey);
+        partitionKeyField.setFieldLabel("Partition Key");
         partitionKeyField.setWidth(200);
-        partitionKeyField.setMaxLength(40);
     }
 
     public TextField getAppKeyField() {
@@ -86,11 +90,11 @@ public class AppConfigFormFields extends BaseFormFieldConfig {
         return commentField;
     }
 
-    public CheckBoxField getActiveField() {
+    public CheckBox getActiveField() {
         return activeField;
     }
 
-    public NumberField getVersionField() {
+    public NumberField<Integer> getVersionField() {
         return versionField;
     }
 
