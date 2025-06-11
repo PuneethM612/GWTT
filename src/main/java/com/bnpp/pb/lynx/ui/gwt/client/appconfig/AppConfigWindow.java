@@ -7,12 +7,15 @@ import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableWindow;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.profile.AbstractBaseProfile;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.util.GridPanel;
 import com.bnpp.pb.lynx.enums.app.AppIdsConstants;
+import com.bnpp.pb.lynx.ui.gwt.client.AbstractLynxTabWindow;
 import com.bnpp.pb.lynx.ui.gwt.client.LynxGridToolBar;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.sencha.gxt.widget.core.client.container.Container;
 
 import java.util.EnumSet;
+import java.util.LinkedHashMap;
 
-public class AppConfigWindow extends TableWindow {
+public class AppConfigWindow extends AbstractLynxTabWindow {
     public static final String BIZ_OBJECT = "appConfigBO";
     private static AppConfigWindow instance;
     
@@ -33,14 +36,20 @@ public class AppConfigWindow extends TableWindow {
     }
 
     @Override
-    public IsWidget createPanel() {
-        GridPanel gridPanel = (GridPanel) super.createPanel();
-        return gridPanel;
+    public String getAppId() {
+        return AppIdsConstants.APP_CONFIRMS_STATUS.getCode();
     }
 
     @Override
-    public String getAppId() {
-        return AppIdsConstants.APP_CONFIRMS_STATUS.getCode();
+    public LinkedHashMap<String, TableWindow> getTabConfigDetails() {
+        LinkedHashMap<String, TableWindow> config = new LinkedHashMap<>();
+        config.put("Application Configuration", this);
+        return config;
+    }
+
+    @Override
+    public Container createPanel() {
+        return super.createPanel();
     }
 
     @Override
@@ -54,13 +63,13 @@ public class AppConfigWindow extends TableWindow {
     }
 
     @Override
-    public EnumSet<ToolbarFlag> getToolbarFlags() {
-        getGridToolbar().setExportOnTop(false);
-        return defaultFlags;
+    public GridToolbar createGridToolbar() {
+        return new LynxGridToolBar(tableView);
     }
 
     @Override
-    public GridToolbar createGridToolbar() {
-        return new LynxGridToolBar(tableView);
+    public EnumSet<ToolbarFlag> getToolbarFlags() {
+        getGridToolbar().setExportOnTop(false);
+        return defaultFlags;
     }
 } 

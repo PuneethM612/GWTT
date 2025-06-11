@@ -6,6 +6,7 @@ import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.form.TextArea;
 import com.sencha.gxt.widget.core.client.form.IntegerField;
 import com.sencha.gxt.widget.core.client.form.CheckBox;
+import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class AppConfigFormFields extends BaseFormFieldConfig {
@@ -24,41 +25,46 @@ public class AppConfigFormFields extends BaseFormFieldConfig {
     }
 
     @Override
-    public BaseFormFieldConfig createFields() {
+    public Widget[] createFields() {
         initFields();
-        updateFieldMap(getFields());
-        return this;
+        Widget[] fields = new Widget[] {
+            new FieldLabel(appKeyField, "App Key"),
+            new FieldLabel(emailIdField, "Email ID"),
+            new FieldLabel(toField, "To"),
+            new FieldLabel(ccField, "CC"),
+            new FieldLabel(commentField, "Comment"),
+            activeField,
+            new FieldLabel(versionField, "Version"),
+            new FieldLabel(partitionKeyField, "Partition Key")
+        };
+        updateFieldMap(fields);
+        return fields;
     }
 
     private void initFields() {
         appKeyField = new TextField();
         appKeyField.setName(AppConfigFieldsDef.appKey);
-        setLabel(appKeyField, "App Key");
         appKeyField.setAllowBlank(false);
         appKeyField.setWidth(300);
 
         emailIdField = new TextField();
         emailIdField.setName(AppConfigFieldsDef.emailId);
-        setLabel(emailIdField, "Email ID");
         emailIdField.setAllowBlank(false);
         emailIdField.setWidth(300);
 
         toField = new TextArea();
         toField.setName(AppConfigFieldsDef.toField);
-        setLabel(toField, "To");
         toField.setAllowBlank(false);
         toField.setWidth(300);
         toField.setHeight(60);
 
         ccField = new TextArea();
         ccField.setName(AppConfigFieldsDef.ccField);
-        setLabel(ccField, "CC");
         ccField.setWidth(300);
         ccField.setHeight(60);
 
         commentField = new TextArea();
         commentField.setName(AppConfigFieldsDef.comment);
-        setLabel(commentField, "Comment");
         commentField.setWidth(300);
         commentField.setHeight(60);
 
@@ -69,18 +75,12 @@ public class AppConfigFormFields extends BaseFormFieldConfig {
 
         versionField = new IntegerField();
         versionField.setName(AppConfigFieldsDef.version);
-        setLabel(versionField, "Version");
         versionField.setValue(0);
         versionField.setWidth(100);
 
         partitionKeyField = new TextField();
         partitionKeyField.setName(AppConfigFieldsDef.partitionKey);
-        setLabel(partitionKeyField, "Partition Key");
         partitionKeyField.setWidth(200);
-    }
-
-    private void setLabel(Field<?> field, String label) {
-        field.setTitle(label);
     }
 
     public TextField getAppKeyField() {
