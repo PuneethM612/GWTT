@@ -6,17 +6,13 @@ import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.form.DataEntryForm;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableView;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableWindow;
 import com.bnpp.pb.common.coreui.gwt.client.to.QueryArgsTO;
-import com.bnpp.pb.lynx.enums.app.AppIdsConstants;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 
-/**
- * Table view for the App Config window
- */
 public class AppConfigTableView extends TableView {
     private static final String BIZ_OBJECT = "appConfigBO";
 
-    public AppConfigTableView(final TableWindow parentWindow) {
-        super(true, parentWindow);
+    public AppConfigTableView(boolean isEditable, TableWindow window) {
+        super(isEditable, window);
     }
 
     @Override
@@ -30,8 +26,8 @@ public class AppConfigTableView extends TableView {
     }
 
     @Override
-    public BaseGridColumnConfig createColumnsConfig() {
-        return new AppConfigColConfig(this);
+    public BaseGridColumnConfig createColumnConfig() {
+        return new AppConfigColumnConfig(this);
     }
 
     @Override
@@ -40,8 +36,8 @@ public class AppConfigTableView extends TableView {
     }
 
     @Override
-    public DataEntryForm getDataEntryForm() {
-        return new AppConfigForm(this);
+    public DataEntryForm createDataEntryForm() {
+        return new AppConfigForm(getWindow());
     }
 
     @Override
@@ -49,10 +45,5 @@ public class AppConfigTableView extends TableView {
         QueryArgsTO queryArgsTO = super.createDefaultQuery();
         queryArgsTO.fieldNames = AppConfigDef.gridFieldNames;
         return queryArgsTO;
-    }
-
-    @Override
-    public String getAppId() {
-        return AppIdsConstants.APP_CONFIRMS_STATUS.getCode();
     }
 } 
