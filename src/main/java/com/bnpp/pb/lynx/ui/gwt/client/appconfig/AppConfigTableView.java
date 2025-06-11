@@ -1,13 +1,9 @@
 package com.bnpp.pb.lynx.ui.gwt.client.appconfig;
 
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.base.BaseGridColumnConfig;
-import com.bnpp.pb.common.coreui.gwt.client.gxt3.base.BaseFieldsDef;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.form.DataEntryForm;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableView;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableWindow;
-import com.bnpp.pb.common.coreui.gwt.client.gxt3.grid.ModelData;
-import com.sencha.gxt.data.shared.ListStore;
-import com.sencha.gxt.data.shared.ModelKeyProvider;
 
 public class AppConfigTableView extends TableView {
     private TableWindow window;
@@ -25,12 +21,7 @@ public class AppConfigTableView extends TableView {
     }
 
     @Override
-    public BaseFieldsDef createFieldsDef() {
-        return new AppConfigFieldsDef();
-    }
-
-    @Override
-    public BaseFieldsDef getFieldsDef() {
+    public AppConfigFieldsDef getFieldsDef() {
         return fieldsDef;
     }
 
@@ -42,16 +33,5 @@ public class AppConfigTableView extends TableView {
     @Override
     public String getBizObjectName() {
         return AppConfigWindow.BIZ_OBJECT;
-    }
-
-    @Override
-    protected ListStore<ModelData> createStore() {
-        return new ListStore<>(new ModelKeyProvider<ModelData>() {
-            @Override
-            public String getKey(ModelData item) {
-                Object id = item.get(AppConfigFieldsDef.id);
-                return id != null ? id.toString() : "";
-            }
-        });
     }
 } 
