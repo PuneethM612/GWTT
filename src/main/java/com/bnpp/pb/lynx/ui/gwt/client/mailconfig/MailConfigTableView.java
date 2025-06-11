@@ -1,5 +1,6 @@
 package com.bnpp.pb.lynx.ui.gwt.client.mailconfig;
 
+import com.bnpp.pb.common.coreui.gwt.client.base.BaseFieldsDef;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.base.BaseGridColumnConfig;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.form.DataEntryForm;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableView;
@@ -30,12 +31,12 @@ public class MailConfigTableView extends TableView {
     }
 
     @Override
-    public MailConfigFieldsDef createFieldsDef() {
+    public BaseFieldsDef createFieldsDef() {
         return new MailConfigFieldsDef();
     }
 
     @Override
-    public MailConfigFieldsDef getFieldsDef() {
+    public BaseFieldsDef getFieldsDef() {
         return fieldsDef;
     }
 

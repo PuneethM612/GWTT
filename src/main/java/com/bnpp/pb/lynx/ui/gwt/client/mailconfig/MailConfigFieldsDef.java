@@ -1,6 +1,8 @@
 package com.bnpp.pb.lynx.ui.gwt.client.mailconfig;
 
-public class MailConfigFieldsDef {
+import com.bnpp.pb.common.coreui.gwt.client.base.BaseFieldsDef;
+
+public class MailConfigFieldsDef extends BaseFieldsDef {
     public static final String id = "id";
     public static final String appKey = "appKey";
     public static final String emailId = "emailId";
