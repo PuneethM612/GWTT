@@ -4,7 +4,7 @@ import com.bnpp.pb.common.coreui.gwt.client.gxt3.base.BaseFormFieldConfig;
 import com.sencha.gxt.widget.core.client.form.Field;
 import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.form.TextArea;
-import com.sencha.gxt.widget.core.client.form.NumberField;
+import com.sencha.gxt.widget.core.client.form.IntegerField;
 import com.sencha.gxt.widget.core.client.form.CheckBox;
 
 public class AppConfigFormFields extends BaseFormFieldConfig {
@@ -14,16 +14,15 @@ public class AppConfigFormFields extends BaseFormFieldConfig {
     private TextArea ccField;
     private TextArea commentField;
     private CheckBox activeField;
-    private NumberField<Integer> versionField;
+    private IntegerField versionField;
     private TextField partitionKeyField;
 
     public AppConfigFormFields() {
         super();
-        createFields();
+        initFields();
     }
 
-    @Override
-    public void createFields() {
+    private void initFields() {
         appKeyField = new TextField();
         appKeyField.setName(AppConfigFieldsDef.appKey);
         setLabel(appKeyField, "App Key");
@@ -60,7 +59,7 @@ public class AppConfigFormFields extends BaseFormFieldConfig {
         activeField.setBoxLabel("Active");
         activeField.setValue(true);
 
-        versionField = new NumberField<Integer>();
+        versionField = new IntegerField();
         versionField.setName(AppConfigFieldsDef.version);
         setLabel(versionField, "Version");
         versionField.setValue(0);
@@ -100,7 +99,7 @@ public class AppConfigFormFields extends BaseFormFieldConfig {
         return activeField;
     }
 
-    public NumberField<Integer> getVersionField() {
+    public IntegerField getVersionField() {
         return versionField;
     }
 

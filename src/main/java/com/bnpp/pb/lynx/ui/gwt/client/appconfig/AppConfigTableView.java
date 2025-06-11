@@ -1,35 +1,36 @@
 package com.bnpp.pb.lynx.ui.gwt.client.appconfig;
 
-import com.bnpp.pb.common.coreui.gwt.client.gxt3.base.BaseFieldsDef;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.base.BaseGridColumnConfig;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.form.DataEntryForm;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableView;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableWindow;
-import com.bnpp.pb.common.coreui.gwt.client.to.QueryArgsTO;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
+import com.sencha.gxt.widget.core.client.grid.Grid;
 
 public class AppConfigTableView extends TableView {
     private TableWindow window;
     private AppConfigColumnConfig columnConfig;
+    private AppConfigFieldsDef fieldsDef;
     
     public AppConfigTableView(boolean isEditable, TableWindow window) {
         super(isEditable, window);
         this.window = window;
         this.columnConfig = new AppConfigColumnConfig(this);
+        this.fieldsDef = new AppConfigFieldsDef();
     }
 
     @Override
-    public BaseGridColumnConfig createColumnsConfig() {
+    public BaseGridColumnConfig getColumnsConfig() {
         return columnConfig;
     }
 
     @Override
-    public BaseFieldsDef createFieldsDef() {
-        return new AppConfigFieldsDef();
+    public AppConfigFieldsDef getFieldsDef() {
+        return fieldsDef;
     }
 
     @Override
-    public DataEntryForm createDataEntryForm() {
+    public DataEntryForm getDataEntryForm() {
         return new AppConfigForm(window);
     }
 
@@ -39,14 +40,10 @@ public class AppConfigTableView extends TableView {
     }
 
     @Override
-    protected ColumnModel<ModelData> createColumnModel() {
-        return new ColumnModel<>(columnConfig.createColumns());
-    }
-
-    @Override
-    public QueryArgsTO createDefaultQuery() {
-        QueryArgsTO queryArgsTO = super.createDefaultQuery();
-        queryArgsTO.fieldNames = AppConfigDef.gridFieldNames;
-        return queryArgsTO;
+    public Grid<ModelData> createGrid() {
+        Grid<ModelData> grid = new Grid<>(getStore(), new ColumnModel<>(columnConfig.createColumns()));
+        grid.setLoadMask(true);
+        grid.getView().setStripeRows(true);
+        return grid;
     }
 } 
