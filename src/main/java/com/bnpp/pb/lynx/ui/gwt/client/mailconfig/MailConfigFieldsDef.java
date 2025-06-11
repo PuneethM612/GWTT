@@ -35,4 +35,9 @@ public class MailConfigFieldsDef extends BaseFieldsDef {
     protected void setFieldNames(String[] gridFields, String[] formFields) {
         // This method is used by child classes to set field names
     }
+
+    @Override
+    public String getldentifierField() {
+        return id;
+    }
 } 
