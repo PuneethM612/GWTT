@@ -22,6 +22,11 @@ public class AppConfigFormFields extends BaseFormFieldConfig {
         initFields();
     }
 
+    @Override
+    public void createFields() {
+        initFields();
+    }
+
     private void initFields() {
         appKeyField = new TextField();
         appKeyField.setName(AppConfigFieldsDef.appKey);

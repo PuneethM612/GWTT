@@ -5,15 +5,16 @@ import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.profile.AbstractBasePro
 
 public class AppConfigProfile extends AbstractBaseProfile {
     
-    public AppConfigProfile(TableWindow window, String profileName) {
-        super(window, profileName);
-        initDefaultProfile();
+    public AppConfigProfile(TableWindow window) {
+        super(window);
+        initProfiles();
     }
 
-    private void initDefaultProfile() {
+    @Override
+    public void initProfiles() {
         // Set default profile settings
         for (String field : AppConfigFieldsDef.gridDefaultFieldNames) {
-            setFieldVisible(field, true);
+            setFieldVisibility(field, true);
         }
     }
 

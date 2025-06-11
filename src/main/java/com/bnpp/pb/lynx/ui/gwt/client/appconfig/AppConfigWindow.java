@@ -50,7 +50,7 @@ public class AppConfigWindow extends TableWindow {
 
     @Override
     public AbstractBaseProfile createProfile() {
-        return new AppConfigProfile(this, "Default");
+        return new AppConfigProfile(this);
     }
 
     @Override
