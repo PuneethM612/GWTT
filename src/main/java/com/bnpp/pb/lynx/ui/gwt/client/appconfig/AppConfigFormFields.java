@@ -20,12 +20,14 @@ public class AppConfigFormFields extends BaseFormFieldConfig {
 
     public AppConfigFormFields() {
         super();
-        initFields();
+        createFields();
     }
 
     @Override
-    public void createFields() {
+    public BaseFormFieldConfig createFields() {
         initFields();
+        updateFieldMap(getFields());
+        return this;
     }
 
     private void initFields() {
