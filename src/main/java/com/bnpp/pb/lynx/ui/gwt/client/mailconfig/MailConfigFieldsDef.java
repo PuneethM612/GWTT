@@ -41,4 +41,13 @@ public class MailConfigFieldsDef extends BaseFieldsDef {
     public FieldDef getIdentifierField() {
         return createFieldDef(id);
     }
+
+    @Override
+    public FieldDef[] createFieldsDef() {
+        FieldDef[] fieldDefs = new FieldDef[gridFieldNames.length];
+        for (int i = 0; i < gridFieldNames.length; i++) {
+            fieldDefs[i] = createFieldDef(gridFieldNames[i]);
+        }
+        return fieldDefs;
+    }
 } 
