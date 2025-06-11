@@ -6,7 +6,7 @@ import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.form.TextArea;
 import com.sencha.gxt.widget.core.client.form.IntegerField;
 import com.sencha.gxt.widget.core.client.form.CheckBox;
-import com.sencha.gxt.widget.core.client.Widget;
+import com.google.gwt.user.client.ui.Widget;
 
 public class AppConfigFormFields extends BaseFormFieldConfig {
     private TextField appKeyField;
@@ -24,9 +24,8 @@ public class AppConfigFormFields extends BaseFormFieldConfig {
     }
 
     @Override
-    public Widget[] createFields() {
+    public void createFields() {
         initFields();
-        return getFields();
     }
 
     private void initFields() {
