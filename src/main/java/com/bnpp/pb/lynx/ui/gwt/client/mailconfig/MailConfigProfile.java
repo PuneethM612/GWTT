@@ -1,15 +1,14 @@
-package com.bnpp.pb.lynx.ui.gwt.client.appconfig;
+package com.bnpp.pb.lynx.ui.gwt.client.mailconfig;
 
-import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableWindow;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.profile.AbstractBaseProfile;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AppConfigProfile extends AbstractBaseProfile {
+public class MailConfigProfile extends AbstractBaseProfile {
     private Map<String, Boolean> fieldVisibility = new HashMap<>();
-    private TableWindow window;
+    private MailConfigWindow window;
     
-    public AppConfigProfile(TableWindow window) {
+    public MailConfigProfile(MailConfigWindow window) {
         super(window);
         this.window = window;
         initProfiles();
@@ -17,7 +16,7 @@ public class AppConfigProfile extends AbstractBaseProfile {
 
     public void initProfiles() {
         // Set default profile settings
-        for (String field : AppConfigFieldsDef.gridDefaultFieldNames) {
+        for (String field : MailConfigFieldsDef.gridFieldNames) {
             fieldVisibility.put(field, true);
         }
     }
@@ -30,8 +29,8 @@ public class AppConfigProfile extends AbstractBaseProfile {
         fieldVisibility.put(fieldName, visible);
     }
 
+    @Override
     public String getBizObjectName() {
-        return AppConfigWindow.BIZ_OBJECT;
+        return MailConfigTableView.BIZ_OBJECT;
     }
-} 
 } 

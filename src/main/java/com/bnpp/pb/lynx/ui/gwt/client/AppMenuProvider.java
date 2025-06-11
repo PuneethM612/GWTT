@@ -2,6 +2,9 @@ package com.bnpp.pb.lynx.ui.gwt.client;
 
 import java.util.Arrays;
 import java.util.List;
+import com.bnpp.pb.common.coreui.gwt.client.autobean.userpref.IAppMenuItem;
+import com.bnpp.pb.common.coreui.gwt.client.autobean.userpref.impl.AppMenuItem;
+import com.bnpp.pb.lynx.ui.gwt.client.mailconfig.MailConfigWindow;
 
 public class AppMenuProvider {
 
@@ -15,6 +18,16 @@ public class AppMenuProvider {
                 "I",
                 "Application Configuration",
                 AppConfigWindow.getInstance().getClass().getName(),
+                AppEntryPoint.JSNI_CALL_EVENT_ID,
+                "settings",
+                null
+            ),
+            new AppMenuItem(
+                "MAIL_CONFIG",
+                "Mail Configuration",
+                "I",
+                "Mail Configuration",
+                MailConfigWindow.getInstance().getClass().getName(),
                 AppEntryPoint.JSNI_CALL_EVENT_ID,
                 "settings",
                 null

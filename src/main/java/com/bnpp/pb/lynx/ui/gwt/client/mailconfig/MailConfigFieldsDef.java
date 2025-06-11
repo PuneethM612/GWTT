@@ -1,8 +1,8 @@
-package com.bnpp.pb.lynx.ui.gwt.client.appconfig;
+package com.bnpp.pb.lynx.ui.gwt.client.mailconfig;
 
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.base.BaseFieldsDef;
 
-public class AppConfigFieldsDef extends BaseFieldsDef {
+public class MailConfigFieldsDef extends BaseFieldsDef {
     public static final String id = "id";
     public static final String appKey = "appKey";
     public static final String emailId = "emailId";
@@ -17,7 +17,7 @@ public class AppConfigFieldsDef extends BaseFieldsDef {
     public static final String version = "version";
     public static final String partitionKey = "partitionKey";
 
-    public static final String[] gridDefaultFieldNames = {
+    public static final String[] gridFieldNames = {
         id, appKey, emailId, toField, ccField, comment, active,
         createDate, createdBy, lastModified, lastModifiedUser,
         version, partitionKey
@@ -28,7 +28,7 @@ public class AppConfigFieldsDef extends BaseFieldsDef {
         version, partitionKey
     };
 
-    public String[] getFieldNames() {
-        return gridDefaultFieldNames;
+    public MailConfigFieldsDef() {
+        setFieldNames(gridFieldNames, formFieldNames);
     }
 } 
