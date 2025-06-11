@@ -29,7 +29,7 @@ public class MailConfigWindow extends TableWindow {
 
     private MailConfigWindow() {
         super();
-        setHeading("Mail Configuration");
+        setWindowTitle("Mail Configuration");
     }
 
     @Override
