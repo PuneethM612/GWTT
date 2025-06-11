@@ -1,6 +1,7 @@
 package com.bnpp.pb.lynx.ui.gwt.client.mailconfig;
 
 import com.bnpp.pb.common.coreui.gwt.client.base.BaseFieldsDef;
+import com.bnpp.pb.common.coreui.gwt.client.base.FieldDef;
 
 public class MailConfigFieldsDef extends BaseFieldsDef {
     public static final String id = "id";
@@ -37,7 +38,7 @@ public class MailConfigFieldsDef extends BaseFieldsDef {
     }
 
     @Override
-    public String getIdentifierField() {
-        return id;
+    public FieldDef getIdentifierField() {
+        return createFieldDef(id);
     }
 } 
