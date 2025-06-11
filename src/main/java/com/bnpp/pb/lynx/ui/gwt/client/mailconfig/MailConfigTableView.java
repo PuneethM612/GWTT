@@ -1,11 +1,12 @@
 package com.bnpp.pb.lynx.ui.gwt.client.mailconfig;
 
-import com.bnpp.pb.common.coreui.gwt.client.gxt3.base.BaseFieldsDef;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.base.BaseGridColumnConfig;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.form.DataEntryForm;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableView;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableWindow;
 import com.bnpp.pb.lynx.enums.app.AppIdsConstants;
+import com.sencha.gxt.widget.core.client.grid.ColumnModel;
+import com.bnpp.pb.common.coreui.gwt.client.gxt3.grid.ModelData;
 
 public class MailConfigTableView extends TableView {
     public static final String BIZ_OBJECT = "mailConfigBO";
@@ -24,12 +25,17 @@ public class MailConfigTableView extends TableView {
     }
 
     @Override
-    public BaseFieldsDef createFieldsDef() {
+    public ColumnModel<ModelData<String>> createColModel() {
+        return new ColumnModel<>(getColumnsConfig().createColumns());
+    }
+
+    @Override
+    public MailConfigFieldsDef createFieldsDef() {
         return new MailConfigFieldsDef();
     }
 
     @Override
-    public BaseFieldsDef getFieldsDef() {
+    public MailConfigFieldsDef getFieldsDef() {
         return fieldsDef;
     }
 

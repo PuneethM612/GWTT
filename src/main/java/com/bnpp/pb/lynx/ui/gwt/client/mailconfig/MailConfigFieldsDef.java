@@ -1,8 +1,6 @@
 package com.bnpp.pb.lynx.ui.gwt.client.mailconfig;
 
-import com.bnpp.pb.common.coreui.gwt.client.gxt3.base.BaseFieldsDef;
-
-public class MailConfigFieldsDef extends BaseFieldsDef {
+public class MailConfigFieldsDef {
     public static final String id = "id";
     public static final String appKey = "appKey";
     public static final String emailId = "emailId";
@@ -30,5 +28,9 @@ public class MailConfigFieldsDef extends BaseFieldsDef {
 
     public MailConfigFieldsDef() {
         setFieldNames(gridFieldNames, formFieldNames);
+    }
+
+    protected void setFieldNames(String[] gridFields, String[] formFields) {
+        // This method is used by child classes to set field names
     }
 } 
