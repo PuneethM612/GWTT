@@ -1,6 +1,8 @@
 package com.bnpp.pb.lynx.ui.gwt.client.appconfig;
 
-public class AppConfigFieldsDef {
+import com.bnpp.pb.common.coreui.gwt.client.gxt3.base.BaseFieldsDef;
+
+public class AppConfigFieldsDef extends BaseFieldsDef {
     public static final String id = "id";
     public static final String appKey = "appKey";
     public static final String emailId = "emailId";
@@ -25,4 +27,9 @@ public class AppConfigFieldsDef {
         id, appKey, emailId, toField, ccField, comment, active,
         version, partitionKey
     };
+
+    @Override
+    public String[] getFieldNames() {
+        return gridDefaultFieldNames;
+    }
 } 

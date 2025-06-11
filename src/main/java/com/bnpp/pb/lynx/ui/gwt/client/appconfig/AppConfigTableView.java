@@ -1,6 +1,6 @@
 package com.bnpp.pb.lynx.ui.gwt.client.appconfig;
 
-import com.bnpp.pb.common.coreui.gwt.client.base.BaseFieldsDef;
+import com.bnpp.pb.common.coreui.gwt.client.gxt3.base.BaseFieldsDef;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.base.BaseGridColumnConfig;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.form.DataEntryForm;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableView;
@@ -10,15 +10,22 @@ import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 
 public class AppConfigTableView extends TableView {
     private TableWindow window;
+    private AppConfigColumnConfig columnConfig;
     
     public AppConfigTableView(boolean isEditable, TableWindow window) {
         super(isEditable, window);
         this.window = window;
+        this.columnConfig = new AppConfigColumnConfig(this);
     }
 
     @Override
-    public BaseGridColumnConfig createColumnConfig() {
-        return new AppConfigColumnConfig(this);
+    public BaseGridColumnConfig createColumnsConfig() {
+        return columnConfig;
+    }
+
+    @Override
+    public BaseFieldsDef createFieldsDef() {
+        return new AppConfigFieldsDef();
     }
 
     @Override
@@ -32,13 +39,8 @@ public class AppConfigTableView extends TableView {
     }
 
     @Override
-    public ColumnModel createColModel() {
-        return new ColumnModel(getColumnsConfig().createColumns());
-    }
-
-    @Override
-    public BaseFieldsDef createFieldsDef() {
-        return new AppConfigDef();
+    protected ColumnModel<ModelData> createColumnModel() {
+        return new ColumnModel<>(columnConfig.createColumns());
     }
 
     @Override
