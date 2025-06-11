@@ -9,20 +9,11 @@ import com.bnpp.pb.common.coreui.gwt.client.to.QueryArgsTO;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 
 public class AppConfigTableView extends TableView {
-    private static final String BIZ_OBJECT = "appConfigBO";
-
+    private TableWindow window;
+    
     public AppConfigTableView(boolean isEditable, TableWindow window) {
         super(isEditable, window);
-    }
-
-    @Override
-    public String getBizObjectName() {
-        return BIZ_OBJECT;
-    }
-
-    @Override
-    public ColumnModel createColModel() {
-        return new ColumnModel(getColumnsConfig().createColumns());
+        this.window = window;
     }
 
     @Override
@@ -31,13 +22,23 @@ public class AppConfigTableView extends TableView {
     }
 
     @Override
-    public BaseFieldsDef createFieldsDef() {
-        return new AppConfigDef();
+    public DataEntryForm createDataEntryForm() {
+        return new AppConfigForm(window);
     }
 
     @Override
-    public DataEntryForm createDataEntryForm() {
-        return new AppConfigForm(getWindow());
+    public String getBizObjectName() {
+        return AppConfigWindow.BIZ_OBJECT;
+    }
+
+    @Override
+    public ColumnModel createColModel() {
+        return new ColumnModel(getColumnsConfig().createColumns());
+    }
+
+    @Override
+    public BaseFieldsDef createFieldsDef() {
+        return new AppConfigDef();
     }
 
     @Override

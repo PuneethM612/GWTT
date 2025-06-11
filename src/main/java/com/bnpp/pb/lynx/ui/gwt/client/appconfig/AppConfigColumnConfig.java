@@ -1,6 +1,5 @@
 package com.bnpp.pb.lynx.ui.gwt.client.appconfig;
 
-import com.bnpp.pb.common.coreui.gwt.client.base.GridColumns;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.base.BaseGridColumnConfig;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.grid.ModelData;
 import com.bnpp.pb.common.coreui.gwt.client.gxt3.ui.grid.TableView;
