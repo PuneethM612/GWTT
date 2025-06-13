@@ -97,6 +97,9 @@ public class MailConfigWindow extends TableWindow {
         
         // Force layout refresh
         container.forceLayout();
+        
+        // Load data using TableView
+        tableView.load();
     }
 
     @Override
