@@ -23,6 +23,7 @@ public class MailConfigWindow extends TableWindow {
     private Grid<MailConfigModel> grid;
     private ListStore<MailConfigModel> store;
     private static final MailConfigProperties properties = GWT.create(MailConfigProperties.class);
+    private TableView tableView;
     
     public static final EnumSet<ToolbarFlag> defaultFlags = EnumSet.of(
         ToolbarFlag.REFRESH,
@@ -80,8 +81,9 @@ public class MailConfigWindow extends TableWindow {
         grid.setColumnReordering(true);
         grid.setAllowTextSelection(true);
 
-        // Set the grid as the layout widget of the window
-        setLayoutWidget(grid);
+        // Initialize the table view
+        tableView = createTableView();
+        tableView.setGrid(grid);
     }
 
     @Override
