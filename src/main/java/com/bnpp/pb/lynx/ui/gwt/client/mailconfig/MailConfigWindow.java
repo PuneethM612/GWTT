@@ -80,8 +80,8 @@ public class MailConfigWindow extends TableWindow {
         grid.setColumnReordering(true);
         grid.setAllowTextSelection(true);
 
-        // Set the grid as the main component of the window
-        setMainComponent(grid);
+        // Set the grid as the content of the window
+        setContent(grid);
     }
 
     @Override
