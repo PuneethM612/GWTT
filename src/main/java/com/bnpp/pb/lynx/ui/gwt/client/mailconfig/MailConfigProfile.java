@@ -16,9 +16,19 @@ public class MailConfigProfile extends AbstractBaseProfile {
 
     public void initProfiles() {
         // Set default profile settings
-        for (String field : MailConfigFieldsDef.gridFieldNames) {
-            fieldVisibility.put(field, true);
-        }
+        fieldVisibility.put("id", true);
+        fieldVisibility.put("appKey", true);
+        fieldVisibility.put("emailId", true);
+        fieldVisibility.put("toField", true);
+        fieldVisibility.put("ccField", true);
+        fieldVisibility.put("comment", true);
+        fieldVisibility.put("active", true);
+        fieldVisibility.put("createDate", true);
+        fieldVisibility.put("createdBy", true);
+        fieldVisibility.put("lastModified", true);
+        fieldVisibility.put("lastModifiedUser", true);
+        fieldVisibility.put("version", true);
+        fieldVisibility.put("partitionKey", true);
     }
 
     public boolean isFieldVisible(String fieldName) {
