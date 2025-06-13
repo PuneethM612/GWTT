@@ -80,10 +80,8 @@ public class MailConfigWindow extends TableWindow {
         grid.setColumnReordering(true);
         grid.setAllowTextSelection(true);
 
-        // Add the grid to the window using setWidget instead of add
-        VerticalLayoutContainer container = new VerticalLayoutContainer();
-        container.setWidget(grid);
-        setWidget(container);
+        // Set the grid as the main component of the window
+        setMainComponent(grid);
     }
 
     @Override
