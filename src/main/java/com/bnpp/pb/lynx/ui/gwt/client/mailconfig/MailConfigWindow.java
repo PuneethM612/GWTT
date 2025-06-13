@@ -24,11 +24,8 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 public class MailConfigWindow extends TableWindow {
     private static MailConfigWindow instance;
-    private Grid<MailConfigModel> grid;
-    private ListStore<MailConfigModel> store;
     private static final MailConfigProperties properties = GWT.create(MailConfigProperties.class);
     private TableView tableView;
-    private FlowPanel container;
     
     public static final EnumSet<ToolbarFlag> defaultFlags = EnumSet.of(
         ToolbarFlag.REFRESH,
@@ -47,53 +44,7 @@ public class MailConfigWindow extends TableWindow {
 
     private MailConfigWindow() {
         super();
-        container = new FlowPanel();
-        initializeGrid();
-        // Add the container to the window
-        RootPanel.get().add(container);
-    }
-
-    private void initializeGrid() {
-        // Create the store
-        store = new ListStore<>(new ModelKeyProvider<MailConfigModel>() {
-            @Override
-            public String getKey(MailConfigModel item) {
-                return item.getId();
-            }
-        });
-
-        // Create column configurations
-        List<ColumnConfig<MailConfigModel, ?>> columns = new ArrayList<>();
-        
-        // Add columns with their configurations
-        columns.add(new ColumnConfig<>(properties.id(), 70, "ID"));
-        columns.add(new ColumnConfig<>(properties.appKey(), 120, "App Key"));
-        columns.add(new ColumnConfig<>(properties.emailId(), 120, "Email ID"));
-        columns.add(new ColumnConfig<>(properties.toField(), 200, "To"));
-        columns.add(new ColumnConfig<>(properties.ccField(), 200, "CC"));
-        columns.add(new ColumnConfig<>(properties.comment(), 200, "Comment"));
-        columns.add(new ColumnConfig<>(properties.active(), 60, "Active"));
-        columns.add(new ColumnConfig<>(properties.createDate(), 120, "Created Date"));
-        columns.add(new ColumnConfig<>(properties.createdBy(), 100, "Created By"));
-        columns.add(new ColumnConfig<>(properties.lastModified(), 120, "Last Modified"));
-        columns.add(new ColumnConfig<>(properties.lastModifiedUser(), 100, "Modified By"));
-        columns.add(new ColumnConfig<>(properties.version(), 70, "Version"));
-        columns.add(new ColumnConfig<>(properties.partitionKey(), 100, "Partition Key"));
-
-        // Create the column model
-        ColumnModel<MailConfigModel> columnModel = new ColumnModel<>(columns);
-
-        // Create the grid
-        grid = new Grid<>(store, columnModel);
-        grid.setBorders(true);
-        grid.setColumnReordering(true);
-        grid.setAllowTextSelection(true);
-
-        // Initialize the table view
         tableView = createTableView();
-        
-        // Add the grid to the container
-        container.add(grid);
     }
 
     @Override
