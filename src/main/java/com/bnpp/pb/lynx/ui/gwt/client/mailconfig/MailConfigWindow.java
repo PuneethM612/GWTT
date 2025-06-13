@@ -94,12 +94,6 @@ public class MailConfigWindow extends TableWindow {
         
         // Add the grid to the container
         container.add(grid);
-        
-        // Force layout refresh
-        container.forceLayout();
-        
-        // Load data using TableView
-        tableView.load();
     }
 
     @Override
