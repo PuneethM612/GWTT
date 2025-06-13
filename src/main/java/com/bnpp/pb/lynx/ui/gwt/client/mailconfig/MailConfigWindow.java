@@ -16,11 +16,13 @@ import com.sencha.gxt.data.shared.ModelKeyProvider;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
+import com.google.gwt.core.client.GWT;
 
 public class MailConfigWindow extends TableWindow {
     private static MailConfigWindow instance;
     private Grid<MailConfigModel> grid;
     private ListStore<MailConfigModel> store;
+    private static final MailConfigProperties properties = GWT.create(MailConfigProperties.class);
     
     public static final EnumSet<ToolbarFlag> defaultFlags = EnumSet.of(
         ToolbarFlag.REFRESH,
@@ -55,19 +57,19 @@ public class MailConfigWindow extends TableWindow {
         List<ColumnConfig<MailConfigModel, ?>> columns = new ArrayList<>();
         
         // Add columns with their configurations
-        columns.add(new ColumnConfig<>(new MailConfigProperties().id(), 70, "ID"));
-        columns.add(new ColumnConfig<>(new MailConfigProperties().appKey(), 120, "App Key"));
-        columns.add(new ColumnConfig<>(new MailConfigProperties().emailId(), 120, "Email ID"));
-        columns.add(new ColumnConfig<>(new MailConfigProperties().toField(), 200, "To"));
-        columns.add(new ColumnConfig<>(new MailConfigProperties().ccField(), 200, "CC"));
-        columns.add(new ColumnConfig<>(new MailConfigProperties().comment(), 200, "Comment"));
-        columns.add(new ColumnConfig<>(new MailConfigProperties().active(), 60, "Active"));
-        columns.add(new ColumnConfig<>(new MailConfigProperties().createDate(), 120, "Created Date"));
-        columns.add(new ColumnConfig<>(new MailConfigProperties().createdBy(), 100, "Created By"));
-        columns.add(new ColumnConfig<>(new MailConfigProperties().lastModified(), 120, "Last Modified"));
-        columns.add(new ColumnConfig<>(new MailConfigProperties().lastModifiedUser(), 100, "Modified By"));
-        columns.add(new ColumnConfig<>(new MailConfigProperties().version(), 70, "Version"));
-        columns.add(new ColumnConfig<>(new MailConfigProperties().partitionKey(), 100, "Partition Key"));
+        columns.add(new ColumnConfig<>(properties.id(), 70, "ID"));
+        columns.add(new ColumnConfig<>(properties.appKey(), 120, "App Key"));
+        columns.add(new ColumnConfig<>(properties.emailId(), 120, "Email ID"));
+        columns.add(new ColumnConfig<>(properties.toField(), 200, "To"));
+        columns.add(new ColumnConfig<>(properties.ccField(), 200, "CC"));
+        columns.add(new ColumnConfig<>(properties.comment(), 200, "Comment"));
+        columns.add(new ColumnConfig<>(properties.active(), 60, "Active"));
+        columns.add(new ColumnConfig<>(properties.createDate(), 120, "Created Date"));
+        columns.add(new ColumnConfig<>(properties.createdBy(), 100, "Created By"));
+        columns.add(new ColumnConfig<>(properties.lastModified(), 120, "Last Modified"));
+        columns.add(new ColumnConfig<>(properties.lastModifiedUser(), 100, "Modified By"));
+        columns.add(new ColumnConfig<>(properties.version(), 70, "Version"));
+        columns.add(new ColumnConfig<>(properties.partitionKey(), 100, "Partition Key"));
 
         // Create the column model
         ColumnModel<MailConfigModel> columnModel = new ColumnModel<>(columns);
@@ -77,14 +79,11 @@ public class MailConfigWindow extends TableWindow {
         grid.setBorders(true);
         grid.setColumnReordering(true);
         grid.setAllowTextSelection(true);
-        grid.setStripeRows(true);
-        grid.setColumnLines(true);
-        grid.setAutoExpandColumn(new MailConfigProperties().comment());
 
-        // Add the grid to the window
+        // Add the grid to the window using setWidget instead of add
         VerticalLayoutContainer container = new VerticalLayoutContainer();
-        container.add(grid, new VerticalLayoutContainer.VerticalLayoutData(1, 1));
-        add(container);
+        container.setWidget(grid);
+        setWidget(container);
     }
 
     @Override
