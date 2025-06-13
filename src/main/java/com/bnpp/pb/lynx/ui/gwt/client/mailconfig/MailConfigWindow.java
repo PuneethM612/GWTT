@@ -20,6 +20,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.RootPanel;
 
 public class MailConfigWindow extends TableWindow {
     private static MailConfigWindow instance;
@@ -48,6 +49,8 @@ public class MailConfigWindow extends TableWindow {
         super();
         container = new FlowPanel();
         initializeGrid();
+        // Add the container to the window
+        RootPanel.get().add(container);
     }
 
     private void initializeGrid() {
@@ -91,6 +94,9 @@ public class MailConfigWindow extends TableWindow {
         
         // Add the grid to the container
         container.add(grid);
+        
+        // Force layout refresh
+        container.forceLayout();
     }
 
     @Override
