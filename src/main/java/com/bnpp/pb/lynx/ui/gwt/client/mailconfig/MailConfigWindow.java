@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class MailConfigWindow extends TableWindow {
@@ -25,6 +27,7 @@ public class MailConfigWindow extends TableWindow {
     private ListStore<MailConfigModel> store;
     private static final MailConfigProperties properties = GWT.create(MailConfigProperties.class);
     private TableView tableView;
+    private FlowPanel container;
     
     public static final EnumSet<ToolbarFlag> defaultFlags = EnumSet.of(
         ToolbarFlag.REFRESH,
@@ -43,6 +46,7 @@ public class MailConfigWindow extends TableWindow {
 
     private MailConfigWindow() {
         super();
+        container = new FlowPanel();
         initializeGrid();
     }
 
@@ -85,11 +89,8 @@ public class MailConfigWindow extends TableWindow {
         // Initialize the table view
         tableView = createTableView();
         
-        // Use the most basic window method to add the grid
-        if (grid instanceof Widget) {
-            Widget gridWidget = (Widget) grid;
-            getElement().appendChild(gridWidget.getElement());
-        }
+        // Add the grid to the container
+        container.add(grid);
     }
 
     @Override
