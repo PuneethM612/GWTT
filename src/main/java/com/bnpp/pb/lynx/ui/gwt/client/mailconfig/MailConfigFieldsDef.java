@@ -18,14 +18,15 @@ public class MailConfigFieldsDef extends BaseFieldsDef {
     public static final String version = "version";
     public static final String partitionKey = "partitionKey";
 
-    public static final String[] gridFieldNames = {
-        id, appKey, emailId, toField, ccField, comment, active,
-        createDate, createdBy, lastModified, lastModifiedUser,
+    public static String[] gridFieldNames = new String[] {
+        id, appKey, emailId, toField, ccField, comment, active, 
+        createDate, createdBy, lastModified, lastModifiedUser, 
         version, partitionKey
     };
 
-    public static final String[] formFieldNames = {
+    public static String[] formFieldNames = new String[] {
         id, appKey, emailId, toField, ccField, comment, active,
+        createDate, createdBy, lastModified, lastModifiedUser,
         version, partitionKey
     };
 

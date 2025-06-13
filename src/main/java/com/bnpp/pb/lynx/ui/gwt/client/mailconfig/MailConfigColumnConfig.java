@@ -17,19 +17,19 @@ public class MailConfigColumnConfig extends BaseGridColumnConfig {
         final List<ColumnConfig<ModelData<String>, ?>> columnConfigs = 
             createColumns(MailConfigFieldsDef.gridFieldNames, MailConfigFieldsDef.formFieldNames);
 
-        setColumnProps(MailConfigFieldsDef.id, "ID", 70, false, true);
-        setColumnProps(MailConfigFieldsDef.appKey, "App Key", 120, false, true);
-        setColumnProps(MailConfigFieldsDef.emailId, "Email ID", 120, false, true);
-        setColumnProps(MailConfigFieldsDef.toField, "To", 200, false, true);
-        setColumnProps(MailConfigFieldsDef.ccField, "CC", 200, false, true);
-        setColumnProps(MailConfigFieldsDef.comment, "Comment", 200, false, true);
-        setColumnProps(MailConfigFieldsDef.active, "Active", 60, false, true);
-        setColumnProps(MailConfigFieldsDef.createDate, "Created Date", 120, true, true);
-        setColumnProps(MailConfigFieldsDef.createdBy, "Created By", 100, true, true);
-        setColumnProps(MailConfigFieldsDef.lastModified, "Last Modified", 120, true, true);
-        setColumnProps(MailConfigFieldsDef.lastModifiedUser, "Modified By", 100, true, true);
-        setColumnProps(MailConfigFieldsDef.version, "Version", 70, true, true);
-        setColumnProps(MailConfigFieldsDef.partitionKey, "Partition Key", 100, true, true);
+        setColumnProps(MailConfigFieldsDef.id, "ID", 70, false, false);
+        setColumnProps(MailConfigFieldsDef.appKey, "App Key", 120, false, false);
+        setColumnProps(MailConfigFieldsDef.emailId, "Email ID", 120, false, false);
+        setColumnProps(MailConfigFieldsDef.toField, "To", 200, false, false);
+        setColumnProps(MailConfigFieldsDef.ccField, "CC", 200, false, false);
+        setColumnProps(MailConfigFieldsDef.comment, "Comment", 200, false, false);
+        setColumnProps(MailConfigFieldsDef.active, "Active", 60, false, false);
+        setColumnProps(MailConfigFieldsDef.createDate, "Created Date", 120, false, false);
+        setColumnProps(MailConfigFieldsDef.createdBy, "Created By", 100, false, false);
+        setColumnProps(MailConfigFieldsDef.lastModified, "Last Modified", 120, false, false);
+        setColumnProps(MailConfigFieldsDef.lastModifiedUser, "Modified By", 100, false, false);
+        setColumnProps(MailConfigFieldsDef.version, "Version", 70, true, false);
+        setColumnProps(MailConfigFieldsDef.partitionKey, "Partition Key", 100, true, false);
 
         setSortable(columnConfigs, true);
         return columnConfigs;
