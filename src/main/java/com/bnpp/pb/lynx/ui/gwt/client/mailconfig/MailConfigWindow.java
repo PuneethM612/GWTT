@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.Widget;
 
 public class MailConfigWindow extends TableWindow {
     private static MailConfigWindow instance;
@@ -83,7 +84,12 @@ public class MailConfigWindow extends TableWindow {
 
         // Initialize the table view
         tableView = createTableView();
-        tableView.setGrid(grid);
+        
+        // Use the most basic window method to add the grid
+        if (grid instanceof Widget) {
+            Widget gridWidget = (Widget) grid;
+            getElement().appendChild(gridWidget.getElement());
+        }
     }
 
     @Override
